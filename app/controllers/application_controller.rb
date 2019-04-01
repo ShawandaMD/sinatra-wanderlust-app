@@ -13,4 +13,14 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do #written in controller and accessible in views
+    def logged_in? #will return true or false
+      !!session[:user_id]
+    end
+    def current_user #finds the current user
+      User.find(session[:user_id])
+    end
+
+  end
+
 end
