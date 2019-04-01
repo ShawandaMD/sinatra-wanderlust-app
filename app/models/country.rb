@@ -1,3 +1,3 @@
 class Country < ActiveRecord::Base
-
-end  
+  has_many :journal_entries
+end
