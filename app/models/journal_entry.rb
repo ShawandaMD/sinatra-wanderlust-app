@@ -1,3 +1,4 @@
 class JournalEntry < ActiveRecord::Base
-
-end  
+  belongs_to :user
+  belongs_to :country
+end
