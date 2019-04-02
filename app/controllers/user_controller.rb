@@ -25,11 +25,15 @@ class UserController < ApplicationController
         session[user_id] = @user.id
         redirect to "welcome/:id/:name"
       else
-        redirect to "/login/failure"  
+        redirect to "/login/failure"
   end
 
   get '/signup/failure' do
     erb :"/user/signup_failure"
+  end
+
+  get '/login/failure' do
+    erb :"/user/login_failure"
   end
 
 
