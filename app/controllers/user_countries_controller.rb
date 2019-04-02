@@ -1,7 +1,7 @@
 class UserCountriesController < ApplicationController
 
   get '/welcome/:id/:name' do
-    @user = User.find(session[:user_id])
+    @user = current_user
     erb :"/countries/welcome"
   end
 
