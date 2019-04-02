@@ -20,6 +20,8 @@ class UserController < ApplicationController
   end
 
   post '/login' do
+    @user = User.find_by(params[:email])
+    
 
   end
 
