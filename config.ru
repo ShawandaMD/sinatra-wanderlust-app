@@ -6,4 +6,5 @@ end
 
 use UserController
 use UserCountriesController
+use JournalEntriesController
 run ApplicationController
