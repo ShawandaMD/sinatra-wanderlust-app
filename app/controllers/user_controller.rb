@@ -9,6 +9,9 @@ class UserController < ApplicationController
     @user = User.new(name: params[:name], email: params[:email], password: params[:password])
       if params[:name] == "" || params[:email] == "" || params[:password] == ""
         redirect to "/signup/failure"
+      elsif
+        !!User.find_by(email: params[:email])
+        redirect to "/signup/email_failure"
       else
         @user.save
         #binding.pry
@@ -37,6 +40,10 @@ class UserController < ApplicationController
 
   get '/login/failure' do
     erb :"/user/login_failure"
+  end
+
+  get '/signup/email_failure' do
+    erb :"/user/email_failure"
   end
 
   get '/logout' do
