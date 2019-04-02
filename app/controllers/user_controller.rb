@@ -15,6 +15,10 @@ class UserController < ApplicationController
       end
   end
 
+  get '/login' do
+    erb :login
+  end
+
   get '/signup/failure' do
     erb :"/user/signup_failure"
   end
