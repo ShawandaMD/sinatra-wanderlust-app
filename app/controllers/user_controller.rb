@@ -26,6 +26,7 @@ class UserController < ApplicationController
         redirect to "welcome/:id/:name"
       else
         redirect to "/login/failure"
+      end
   end
 
   get '/signup/failure' do
@@ -34,6 +35,10 @@ class UserController < ApplicationController
 
   get '/login/failure' do
     erb :"/user/login_failure"
+  end
+
+  get '/logout' do
+    session.clear
   end
 
 
