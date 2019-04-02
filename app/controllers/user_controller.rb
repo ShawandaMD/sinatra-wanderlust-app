@@ -21,8 +21,11 @@ class UserController < ApplicationController
 
   post '/login' do
     @user = User.find_by(params[:email])
-    
-
+      if @user && @user.authenticate(params[:password])
+        session[user_id] = @user.id
+        redirect to "welcome/:id/:name"
+      else
+        redirect to "/login/failure"  
   end
 
   get '/signup/failure' do
