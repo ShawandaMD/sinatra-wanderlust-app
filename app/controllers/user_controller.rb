@@ -1,3 +1,4 @@
+require 'pry'
 class UserController < ApplicationController
 
   get '/signup' do
@@ -10,7 +11,8 @@ class UserController < ApplicationController
         redirect to "/signup/failure"
       else
         @user.save
-        session[user_id] = @user.id
+        binding.pry
+        session[:user_id] = @user.id
         redirect to "welcome/:id/:name"
       end
   end
@@ -22,7 +24,7 @@ class UserController < ApplicationController
   post '/login' do
     @user = User.find_by(params[:email])
       if @user && @user.authenticate(params[:password])
-        session[user_id] = @user.id
+        session[:user_id] = @user.id
         redirect to "welcome/:id/:name"
       else
         redirect to "/login/failure"
