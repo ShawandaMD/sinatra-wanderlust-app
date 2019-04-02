@@ -1,8 +1,12 @@
 class UserCountriesController < ApplicationController
 
   get '/welcome/:id/:name' do
-    @user = current_user
-    erb :"/countries/welcome"
+    if logged_in?
+      @user = current_user
+      erb :"/countries/welcome"
+    else
+      redirect to "/"
+    end
   end
 
 end
