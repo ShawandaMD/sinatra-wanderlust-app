@@ -11,7 +11,9 @@ class JournalEntriesController < ApplicationController
 
 #CREATE
   post '/journal_entries' do
-    
+    #if logged_in?
+    @entry = JournalEntry.create(title: params[:title], content: params[:content], date: params[:date])
+    redirect to "/journal_entries/#{@entry.id}"
   end
 
 
