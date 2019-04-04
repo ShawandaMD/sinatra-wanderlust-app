@@ -6,3 +6,7 @@
 <form action="/journal_entries/<%=@entry.id%>/edit">
   <input type="submit" value="edit">
   </form>
+  <form action="/journal_entries/<%=@entry.id%>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+  </form>
