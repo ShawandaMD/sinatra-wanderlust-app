@@ -10,11 +10,10 @@ class JournalEntriesController < ApplicationController
     end
   end
 
-
-  get '/journal_entries' do #incomplete route! Posts all journal entries with country info
-    @entries_all = JournalEntry.all
-    erb :"/countries/welcome"
-  end
+  #get '/journal_entries' do #incomplete route! Posts all journal entries with country info
+  #  @entries_all = JournalEntry.all
+  #  erb :"/countries/welcome"
+  #end
 
   get '/journal_entry/new' do
     erb :"/journal_entries/new"
@@ -52,7 +51,7 @@ class JournalEntriesController < ApplicationController
   delete '/journal_entries/:id/delete' do
     @entry = JournalEntry.find_by_id(params[:id])
     @entry.delete
-    redirect to '/journal_entries'
+    redirect to "/welcome/:id/:name"
   end
 
 end
