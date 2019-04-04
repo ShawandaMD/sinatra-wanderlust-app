@@ -7,6 +7,7 @@ class UserController < ApplicationController
 
   post '/signup' do
     @user = User.new(name: params[:name], email: params[:email], password: params[:password])
+#simplify below with active record validation
       if params[:name] == "" || params[:email] == "" || params[:password] == ""
         redirect to "/signup/failure"
       elsif

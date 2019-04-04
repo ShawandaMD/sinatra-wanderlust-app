@@ -10,11 +10,6 @@ class JournalEntriesController < ApplicationController
     end
   end
 
-  #get '/journal_entries' do #incomplete route! Posts all journal entries with country info
-  #  @entries_all = JournalEntry.all
-  #  erb :"/countries/welcome"
-  #end
-
   get '/journal_entry/new' do
     erb :"/journal_entries/new"
   end
@@ -22,7 +17,9 @@ class JournalEntriesController < ApplicationController
 #CREATE
   post '/journal_entries' do
     #if logged_in?
+    #use new and then save
     @entry = JournalEntry.create(title: params[:title], content: params[:content], date: params[:date])
+    #@entry.user = current_user this is hiddent in the forms
     redirect to "/journal_entries/#{@entry.id}"
   end
 
