@@ -28,5 +28,14 @@ class JournalEntriesController < ApplicationController
     erb :"/journal_entries/edit"
   end
 
+#EDIT UPDATE
+  patch '/journal_entries/:id' do
+    @entry = JournalEntry.find_by_id(params[:id])
+    @entry.title = params[:title]
+    @entry.content = params[:content]
+    @entry.save
+    redirect to "/journal_entries/#{@entry.id}"
+  end
+
 
 end
