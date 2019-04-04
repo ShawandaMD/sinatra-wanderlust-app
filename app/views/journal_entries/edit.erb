@@ -2,12 +2,12 @@
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label for="title">Title:</label>
   <br>
-    <input type="text" name="title" id="title">
+    <input type="text" name="title" id="title" value="<%=@entry.title%>">
   <br>
   <br>
   <label for="content">How was your visit?</label>
   <br>
-    <textarea id="content" type="text" name="content" rows="8" cols="80"></textarea>
+    <textarea id="content" type="text" name="content" rows="8" cols="80"><%=@entry.content%></textarea>
   <br>
   <input type="submit" value="submit">
 </form>
