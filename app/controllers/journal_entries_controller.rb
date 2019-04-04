@@ -1,10 +1,10 @@
 class JournalEntriesController < ApplicationController
 
-  get '/welcome/:id/:name' do
+  get '/welcome/:id/:name' do #A new log in is showing other entry posts
     if logged_in?
       @user = current_user
       @entries_all = JournalEntry.all
-      erb :"/countries/welcome"
+      erb :"/journal_entries/welcome"
     else
       redirect to "/"
     end
@@ -44,7 +44,7 @@ class JournalEntriesController < ApplicationController
     @entry.title = params[:title]
     @entry.content = params[:content]
     @entry.save
-    redirect to "/journal_entries/#{@entry.id}"
+    redirect to "/welcome/#{current_user.id}/#{current_user.name}"
   end
 
 #DELETE
