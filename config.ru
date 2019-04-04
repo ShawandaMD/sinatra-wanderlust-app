@@ -6,6 +6,5 @@ end
 
 use Rack::MethodOverride
 use UserController
-use UserCountriesController
 use JournalEntriesController
 run ApplicationController
