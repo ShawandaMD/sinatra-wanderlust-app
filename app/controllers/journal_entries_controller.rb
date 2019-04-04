@@ -1,8 +1,19 @@
 class JournalEntriesController < ApplicationController
 
+  get '/welcome/:id/:name' do
+    if logged_in?
+      @user = current_user
+      @entries_all = JournalEntry.all
+      erb :"/countries/welcome"
+    else
+      redirect to "/"
+    end
+  end
+
+
   get '/journal_entries' do #incomplete route! Posts all journal entries with country info
     @entries_all = JournalEntry.all
-
+    erb :"/countries/welcome"
   end
 
   get '/journal_entry/new' do
