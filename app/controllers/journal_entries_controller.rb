@@ -16,5 +16,11 @@ class JournalEntriesController < ApplicationController
     redirect to "/journal_entries/#{@entry.id}"
   end
 
+#SHOW
+  get '/journal_entries/:id' do
+    @entry = JournalEntry.find_by_id(params[:id])
+    erb :"/journal_entries/show"
+  end
+
 
 end
