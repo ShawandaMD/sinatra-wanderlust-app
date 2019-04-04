@@ -22,5 +22,11 @@ class JournalEntriesController < ApplicationController
     erb :"/journal_entries/show"
   end
 
+#EDIT
+  get '/journal_entries/:id/edit' do
+    @entry = JournalEntry.find_by_id(params[:id])
+    erb :"/journal_entries/edit"
+  end
+
 
 end
