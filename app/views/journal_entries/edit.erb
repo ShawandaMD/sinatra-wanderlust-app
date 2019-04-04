@@ -1,5 +1,5 @@
-<form action="" method="post">
-  <input type="hidden" name="_method" value="patch">
+<form action="/journal_entries/<%=@entry.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
   <label for="title">Title:</label>
   <br>
     <input type="text" name="title" id="title">
