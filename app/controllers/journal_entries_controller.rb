@@ -37,5 +37,11 @@ class JournalEntriesController < ApplicationController
     redirect to "/journal_entries/#{@entry.id}"
   end
 
+#DELETE
+  delete '/journal_entries/:id/delete' do
+    @entry = JournalEntry.find_by_id(params[:id])
+    @entry.delete
+    redirect to '/journal_entries'
+  end
 
 end
