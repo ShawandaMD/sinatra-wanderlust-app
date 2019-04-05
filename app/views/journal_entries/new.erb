@@ -1,25 +1,26 @@
 <form action="/journal_entries" method="post">
-  <label for="country_name">Country: </label>
+  <div class="">
+    <label for="country_name">Country: </label>
     <input type="text" name="country_name" id="country_name">
-  <br>
-  <label for="city_name">City: </label>
+  </div>
+
+  <div class="">
+    <label for="city_name">City: </label>
     <input type="text" name="city_name" id="city_name">
-  <br>
-  <label for="dates">Dates: </label>
-    <input type="text" name="arrival_date" id="arrival_date" placeholder="Arrival">
-  -  <input type="text" name="arrival_date" id="arrival_date" placeholder="Departure">
-  <br>
-  <br>
-  <br>
-  <label for="title">Title:</label>
-  <br>
+  </div>
+
+  <div class="">
+    <label for="title">Title:</label>
     <input type="text" name="title" id="title">
-  <br>
-  <br>
-  <label for="content">How was your visit?</label>
-  <br>
+  </div>
+
+
+  <div class="">
+    <label for="content">New Travel Experience? Put your memories here...</label>
+    <br>
     <textarea id="content" type="text" name="content" rows="8" cols="80"></textarea>
-  <br>
+  </div>
+
   <input type="hidden" name="user_id" value="<%=current_user.id%>">
   <input type="submit" value="submit">
 
