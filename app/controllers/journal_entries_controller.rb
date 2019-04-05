@@ -42,8 +42,8 @@ class JournalEntriesController < ApplicationController
 #EDIT UPDATE
   patch '/journal_entries/:id' do
     @entry = JournalEntry.find_by_id(params[:id])
-    @entry.country_name = params[:title]
-    @entry.city_name = params[:title]
+    @entry.country_name = params[:country_name]
+    @entry.city_name = params[:city_name]
     @entry.title = params[:title]
     @entry.content = params[:content]
     @entry.date = Date.today
