@@ -1,13 +1,29 @@
 <form action="/journal_entries/<%=@entry.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <label for="title">Title:</label>
-  <br>
-    <input type="text" name="title" id="title" value="<%=@entry.title%>">
-  <br>
-  <br>
-  <label for="content">How was your visit?</label>
-  <br>
-    <textarea id="content" type="text" name="content" rows="8" cols="80"><%=@entry.content%></textarea>
-  <br>
-  <input type="submit" value="submit">
+
+  <div class="">
+    <label for="country_name">Country: </label>
+    <input type="text" name="country_name" value="<%=@entry.country_name%>">
+  </div>
+
+  <div class="">
+    <label for="city_name">City: </label>
+    <input type="text" name="city_name" value="<%=@entry.city_name%>">
+  </div>
+
+  <div class="">
+    <label for="title">Title:</label>
+    <input type="text" name="title" value="<%=@entry.title%>">
+  </div>
+
+
+  <div class="">
+    <label for="content">New Travel Experience? Put your memories here...</label>
+    <br>
+    <textarea id="content" type="text" name="content" rows="8" cols="80">
+      <%=@entry.content%>
+    </textarea>
+  </div>
+
+  <input type="submit" value="Update">
 </form>
