@@ -38,10 +38,6 @@ class UserController < ApplicationController
     erb :"/user/login_failure"
   end
 
-  get '/signup/email_failure' do
-    erb :"/user/email_failure"
-  end
-
   get '/logout' do
     session.clear
     redirect to "/"
