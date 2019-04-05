@@ -6,18 +6,13 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.new(name: params[:name], email: params[:email], password: params[:password])
-#simplify below with active record validation
-      if params[:name] == "" || params[:email] == "" || params[:password] == ""
-        redirect to "/signup/failure"
-      elsif
-        !!User.find_by(email: params[:email])
-        redirect to "/signup/email_failure"
-      else
+    @user = User.new(params)
+      if @user.valid?
         @user.save
-        #binding.pry
         session[:user_id] = @user.id
         redirect to "welcome/#{@user.id}/#{@user.name}"
+      else
+        redirect to "/signup/failure"
       end
   end
 
