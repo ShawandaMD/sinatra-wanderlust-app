@@ -55,7 +55,7 @@ class JournalEntriesController < ApplicationController
   delete '/journal_entries/:id/delete' do
     @entry = JournalEntry.find_by_id(params[:id])
     @entry.delete
-    redirect to "/welcome/:id/:name"
+    redirect to "/welcome/#{current_user.id}/#{current_user.name}"
   end
 
 end
