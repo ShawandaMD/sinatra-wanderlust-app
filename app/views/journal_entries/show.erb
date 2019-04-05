@@ -1,4 +1,7 @@
 <h1><%=@entry.title%></h1>
+<h1><%=@entry.date%></h1>
+
+<p><%=@entry.city_name%>, <%=@entry.country_name%></p>
 
 <p><%=@entry.content%></p>
 
@@ -7,10 +10,13 @@
   <form action="/journal_entries/<%=@entry.id%>/edit">
   <input type="submit" value="edit">
   </form>
-</div>
 
-<div class="">
   <form action="/journal_entries/<%=@entry.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="delete">
+  </form>
+
+  <form action="/welcome/<%=current_user.id%>/<%=current_user.name%>">
+  <input type="submit" value="homepage">
+  </form>
 </div>
