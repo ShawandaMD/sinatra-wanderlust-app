@@ -11,21 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190401041705) do
-
-  create_table "countries", force: :cascade do |t|
-    t.string "country_name"
-    t.string "city_name"
-    t.date   "arrival_date"
-    t.date   "departure_date"
-  end
+ActiveRecord::Schema.define(version: 20190405152824) do
 
   create_table "journal_entries", force: :cascade do |t|
     t.string  "title"
-    t.string  "content"
+    t.text    "content"
     t.date    "date"
+    t.string  "country_name"
+    t.string  "city_name"
     t.integer "user_id"
-    t.integer "country_id"
   end
 
   create_table "users", force: :cascade do |t|
