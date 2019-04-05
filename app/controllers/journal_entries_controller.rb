@@ -2,9 +2,9 @@ require 'pry'
 class JournalEntriesController < ApplicationController
 
   get '/welcome/:id/:name' do #A new log in is showing other entry posts
-    if logged_in? #|| belongs_to_user_id
+    if logged_in?
       @user = current_user
-      @entries_all = JournalEntry.all
+      @entries_all = JournalEntry.where("user_id = ?", @user.id)
       erb :"/journal_entries/welcome"
     else
       redirect to "/"
@@ -36,7 +36,11 @@ class JournalEntriesController < ApplicationController
 #EDIT
   get '/journal_entries/:id/edit' do
     @entry = JournalEntry.find_by_id(params[:id])
-    erb :"/journal_entries/edit"
+    if @entry.user_id == current_user.id
+      erb :"/journal_entries/edit"
+    else
+      "This isnt your article!"
+    end
   end
 
 #EDIT UPDATE
