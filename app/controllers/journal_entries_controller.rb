@@ -1,7 +1,8 @@
+require 'pry'
 class JournalEntriesController < ApplicationController
 
   get '/welcome/:id/:name' do #A new log in is showing other entry posts
-    if logged_in?
+    if logged_in? || belongs_to_user_id
       @user = current_user
       @entries_all = JournalEntry.all
       erb :"/journal_entries/welcome"
@@ -16,11 +17,14 @@ class JournalEntriesController < ApplicationController
 
 #CREATE
   post '/journal_entries' do
-    #if logged_in?
-    #use new and then save
-    @entry = JournalEntry.create(title: params[:title], content: params[:content], date: params[:date])
-    #@entry.user = current_user this is hiddent in the forms
+    @entry = JournalEntry.new(params)
+    if @entry.valid?
+      @entry.date = Date.today
+      @entry.save
     redirect to "/journal_entries/#{@entry.id}"
+    else
+      #should take user back to form to edit that field.
+    end
   end
 
 #SHOW
