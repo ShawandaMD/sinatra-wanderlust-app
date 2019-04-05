@@ -5,7 +5,6 @@ class CreateJournalEntries < ActiveRecord::Migration
       t.string :content
       t.date :date
       t.integer :user_id
-      t.integer :country_id
     end
   end
 end
