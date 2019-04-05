@@ -2,7 +2,7 @@ require 'pry'
 class JournalEntriesController < ApplicationController
 
   get '/welcome/:id/:name' do #A new log in is showing other entry posts
-    if logged_in? || belongs_to_user_id
+    if logged_in? #|| belongs_to_user_id
       @user = current_user
       @entries_all = JournalEntry.all
       erb :"/journal_entries/welcome"
@@ -23,7 +23,7 @@ class JournalEntriesController < ApplicationController
       @entry.save
     redirect to "/journal_entries/#{@entry.id}"
     else
-      #should take user back to form to edit that field.
+      "Your entry is missing some content!"
     end
   end
 
@@ -42,8 +42,11 @@ class JournalEntriesController < ApplicationController
 #EDIT UPDATE
   patch '/journal_entries/:id' do
     @entry = JournalEntry.find_by_id(params[:id])
+    @entry.country_name = params[:title]
+    @entry.city_name = params[:title]
     @entry.title = params[:title]
     @entry.content = params[:content]
+    @entry.date = Date.today
     @entry.save
     redirect to "/welcome/#{current_user.id}/#{current_user.name}"
   end
