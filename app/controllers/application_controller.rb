@@ -1,4 +1,5 @@
-require './config/environment'
+require 'sinatra/base'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -7,13 +8,15 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "secret_wanderlust"
+    use Rack::Flash
   end
+
 
   get "/" do
     erb :index
   end
 
-  helpers do 
+  helpers do
     def logged_in? #will return true or false
       !!session[:user_id]
     end
