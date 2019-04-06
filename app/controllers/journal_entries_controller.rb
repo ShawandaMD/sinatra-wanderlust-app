@@ -1,7 +1,7 @@
 require 'pry'
 class JournalEntriesController < ApplicationController
 
-  get '/welcome/:id/:name' do #A new log in is showing other entry posts
+  get '/user/:id' do
     if logged_in?
       @user = current_user
       @entries_all = JournalEntry.where("user_id = ?", @user.id)
@@ -39,7 +39,9 @@ class JournalEntriesController < ApplicationController
     if @entry.user_id == current_user.id
       erb :"/journal_entries/edit"
     else
-      "This isnt your article!"
+      flash[:notice] = "This isnt your article!"
+      erb :"/journal_entries/edit"
+      #redirect to "/user/#{current_user.id}"
     end
   end
 
@@ -52,7 +54,7 @@ class JournalEntriesController < ApplicationController
     @entry.content = params[:content]
     @entry.date = Date.today
     @entry.save
-    redirect to "/welcome/#{current_user.id}/#{current_user.name}"
+    redirect to "/user/#{current_user.id}"
   end
 
 #DELETE
@@ -60,9 +62,10 @@ class JournalEntriesController < ApplicationController
     @entry = JournalEntry.find_by_id(params[:id])
     if @entry.user_id == current_user.id
       @entry.delete
-      redirect to "/welcome/#{current_user.id}/#{current_user.name}"
+      redirect to "/user/#{current_user.id}"
     else
-      "This isnt your article!"
+      flash[:notice] = "This isnt your article!"
+    end
   end
 
 end
