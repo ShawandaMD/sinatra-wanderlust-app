@@ -10,7 +10,7 @@ class UserController < ApplicationController
       if @user.valid?
         @user.save
         session[:user_id] = @user.id
-        redirect to "welcome/#{@user.id}/#{@user.name}"
+        redirect to "/user/#{@user.id}"
       else
         redirect to "/signup/failure"
       end
@@ -24,7 +24,7 @@ class UserController < ApplicationController
     @user = User.find_by(email: params[:email])
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect to "welcome/#{@user.id}/#{@user.name}"
+        redirect to "/user/#{@user.id}"
       else
         redirect to "/login/failure"
       end
