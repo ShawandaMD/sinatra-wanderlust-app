@@ -6,5 +6,17 @@
     <a href="/login">Log In</a>
     <a href="/signup">Sign Up</a>
 
+    <h3>Shared Experiences:</h3>
+      <ul>
+          <%JournalEntry.all.each do |entry|%>
+            <li>
+                <a href="/journal_entries/<%=entry.id%>">
+                <%=entry.title%> - <%=entry.country_name%>
+              </a>
+            </li>
+          <%end%>
+      </ul>
+
+
   </div>
 </div>
