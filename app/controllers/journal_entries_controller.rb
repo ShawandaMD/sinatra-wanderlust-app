@@ -46,7 +46,6 @@ class JournalEntriesController < ApplicationController
     else
       flash[:notice] =  "This isnt your article!"
       redirect to "/user/#{current_user.id}"
-      #redirect to "/user/#{current_user.id}"
     end
   end
 
