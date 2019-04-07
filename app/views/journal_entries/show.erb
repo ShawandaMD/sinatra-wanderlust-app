@@ -1,3 +1,4 @@
+<%if logged_in? == false || logged_in? == true%>
 <h1><%=@entry.title%></h1>
 <h1><%=@entry.date%></h1>
 
@@ -5,9 +6,10 @@
 
 <p><%=@entry.content%></p>
 
+<%end%>
+  <div class="">
 
-<div class="">
-  <%if @entry.user_id == current_user.id %>
+    <% if logged_in? == true && @entry.user_id == current_user.id%>
   <form action="/journal_entries/<%=@entry.id%>/edit">
   <input type="submit" value="edit">
   </form>
@@ -17,9 +19,16 @@
   <input type="submit" value="delete">
   </form>
 
-  <%end%>
+  <% elsif  logged_in? == true %>
 
   <form action="/user/<%=current_user.id%>">
-  <input type="submit" value="homepage">
+  <input type="submit" value="My Homepage">
   </form>
+  <%else%>
+    <% logged_in? == false %>
+    <form action="/">
+    <input type="submit" value="Homepage ">
+    </form>
+
+  <%end%>
 </div>
