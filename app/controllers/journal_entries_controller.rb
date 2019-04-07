@@ -23,7 +23,7 @@ class JournalEntriesController < ApplicationController
       @entry.save
     redirect to "/journal_entries/#{@entry.id}"
     else
-      "Your entry is missing some content!"
+      flash[:notice] = "Your entry is missing some content!"
     end
   end
 
@@ -32,6 +32,7 @@ class JournalEntriesController < ApplicationController
     @entry = JournalEntry.find_by_id(params[:id])
     if !@entry
       flash[:notice] = "This article does not exist!"
+      redirect to "/"
     else
       erb :"/journal_entries/show"
     end
@@ -43,8 +44,8 @@ class JournalEntriesController < ApplicationController
     if @entry.user_id == current_user.id
       erb :"/journal_entries/edit"
     else
-      flash[:notice] = "This isnt your article!"
-      erb :"/journal_entries/edit"
+      flash[:notice] =  "This isnt your article!"
+      redirect to "/user/#{current_user.id}"
       #redirect to "/user/#{current_user.id}"
     end
   end
