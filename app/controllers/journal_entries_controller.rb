@@ -5,7 +5,7 @@ class JournalEntriesController < ApplicationController
     if logged_in?
       @user = current_user
       @entries_all = JournalEntry.where("user_id = ?", @user.id)
-      erb :"/journal_entries/welcome"
+      erb :"/journal_entries/user_entries"
     else
       redirect to "/"
     end
@@ -30,7 +30,11 @@ class JournalEntriesController < ApplicationController
 #SHOW
   get '/journal_entries/:id' do
     @entry = JournalEntry.find_by_id(params[:id])
-    erb :"/journal_entries/show"
+    if !@entry
+      flash[:notice] = "This article does not exist!"
+    else
+      erb :"/journal_entries/show"
+    end
   end
 
 #EDIT
