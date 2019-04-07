@@ -1,8 +1,11 @@
 <%if logged_in? == false || logged_in? == true%>
-<h1><%=@entry.title%></h1>
-<h1><%=@entry.date%></h1>
+<header>
+<center> <h1><%=@entry.title%></h1> </center>
 
-<p><%=@entry.city_name%>, <%=@entry.country_name%></p>
+<h3><%=@entry.city_name%>, <%=@entry.country_name%></h3>
+
+<p><%=@entry.date%></p>
+</header>
 
 <p><%=@entry.content%></p>
 
@@ -11,15 +14,13 @@
 
     <% if logged_in? == true && @entry.user_id == current_user.id%>
   <form action="/journal_entries/<%=@entry.id%>/edit">
-  <input type="submit" value="edit">
+  <input type="submit" value="Edit">
   </form>
 
   <form action="/journal_entries/<%=@entry.id%>/delete" method="post">
   <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete">
+  <input type="submit" value="Delete">
   </form>
-
-  <% elsif  logged_in? == true %>
 
   <form action="/user/<%=current_user.id%>">
   <input type="submit" value="My Homepage">
