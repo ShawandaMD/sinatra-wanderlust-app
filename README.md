@@ -11,7 +11,7 @@ To get started, you should clone the repository from GitHub into your terminal:
 
 Run bundle to install necessary gems
 
-    $ gem install
+    $ gem install bundler
 
 To access your database run
 
