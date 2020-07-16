@@ -9,11 +9,15 @@ To get started, you should clone the repository from GitHub into your terminal:
     $ git clone git@github.com:ShawandaMD/sinatra-wanderlust-app.git
 
 
-Run bundle to install necessary gems
+The bundler gem is needed to run the application:
 
     $ gem install bundler
 
-To access your database run
+To ensure you have the latest version run:
+
+    $ bundle install
+
+To access your database run:
 
     $ rake db:migrate
 
